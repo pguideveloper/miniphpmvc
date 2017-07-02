@@ -2,9 +2,11 @@
 //Initialize session
 session_start();
 
+
+
 require_once './config.php';
 
-//Verify if the base path is setted
+//Verify if the base path is defined
 if(!defined('BASE_PATH')){
     die('The base path is not defined, please define it on the config.php');
 }
