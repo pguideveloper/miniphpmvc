@@ -1,9 +1,12 @@
 <?php 
-class homeController extends MPM_Controller
+class homeController extends MP_Controller
 {
+    public function __construct()
+    {
+        parent::__construct();   
+    }
     public function index()
     {
-        $data = array();
-        $this->loadView('home', $data);
+        $this->load->view('welcome');
     }
 }

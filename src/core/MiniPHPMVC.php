@@ -50,7 +50,6 @@ class MiniPHPMVC
         $this->init();
     }
 
-
     /**
     * @method parseUrl()
     *
