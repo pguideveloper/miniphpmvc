@@ -17,7 +17,7 @@
 *
 * $autoload['libraries'] = array('lib1', 'lib2','libN');
 */
-$autoload['libraries'] = array('lib');
+$autoload['libraries'] = array();
 
 
 /*
@@ -25,7 +25,7 @@ $autoload['libraries'] = array('lib');
 *
 * $autoload['helpers'] = array('help1', 'help2','helpN');
 */
-$autoload['helpers'] = array('loadTemplate');
+$autoload['helpers'] = array();
 
 
 /*
@@ -41,4 +41,4 @@ $autoload['configs'] = array();
 *
 * $autoload['models'] = array('mod1', 'mod2','modN');
 */
-$autoload['models'] = array('teste');
+$autoload['models'] = array();
