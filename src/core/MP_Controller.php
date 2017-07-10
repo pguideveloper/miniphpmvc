@@ -13,7 +13,8 @@ class MP_Controller
     * @method __construct()
     *
     * Set $instance with the class object. 
-    * Method responsible for loading framework classes 
+    * Method responsible for loading framework classes
+    * and init the loader Class
     * 
     * @uses init() from core/Loader.php
     */
@@ -23,6 +24,7 @@ class MP_Controller
         foreach(is_loaded() as $var => $class){
             $this->$var = load_class($class);
         }
+
         $this->load = load_class('Loader', 'core');
         $this->load->init();
     }

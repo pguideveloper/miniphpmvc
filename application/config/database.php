@@ -1,7 +1,7 @@
 <?php 
 
 /* 
-* Here you change for your database configs
+* Here you do the changes for your database configs
 * 
 * WARNING: Don't change array keys, just the values. 
 */
@@ -10,7 +10,7 @@ $db['default'] = array(
     'hostname'  => 'localhost',
     'username'  => 'root',
     'password'  => '',
-    'database'  => '',
+    'database'  => 'teste',
     'dbprefix'  => '',
     'char_set'  => 'utf-8',
     'dbcollat'  => 'utf8_general_ci'

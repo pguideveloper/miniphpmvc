@@ -1,15 +1,36 @@
 <?php 
 abstract class MP_Model
 {
+    /**
+    * @var object
+    *
+    * Receives PDO object
+    *
+    * @access protected
+    */
     protected $db;
 
+    /**
+    * @var array
+    *
+    * Receives all database configs 
+    *
+    * @access protected
+    */
     protected $db_configs;
+
 
     public function __construct()
     {
         $this->connect();
     }
 
+
+    /**
+    * @method init()
+    *
+    * Initializes the application 
+    */
     private function init()
     {
         $connect_path = APPPATH."config/database.php"; 
@@ -22,6 +43,14 @@ abstract class MP_Model
         return $this->db_configs = $db['default'];
     }
 
+
+    /**
+    * @method connect()
+    *
+    * Do database connection with PDO class. 
+    *
+    * @return object
+    */
     private function connect()
     {
         $this->init();
@@ -33,9 +62,10 @@ abstract class MP_Model
                           $this->db_configs['username'], 
                           $this->db_configs['password']
             );
-        $this->db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
+        $this->db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         return $this->db;
+        
         }catch(PDOException $e){
             echo "Connection failed: ".$e->getMessage();
         }

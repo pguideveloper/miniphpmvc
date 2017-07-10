@@ -10,10 +10,31 @@ class Loader
     */
     protected $_classes         = array();
 
+    /**
+    * Helper paths 
+    *
+    * @var array
+    *
+    * @access protected
+    */
     protected $_helper_paths    = array(APPPATH, BASEPATH);
 
+    /**
+    * Model paths
+    *
+    * @var array
+    *
+    * @access protected
+    */
     protected $_model_paths     = array(APPPATH);
 
+    /**
+    * Library paths
+    *
+    * @var array
+    *
+    * @access protected
+    */
     protected $_library_paths   = array(APPPATH, BASEPATH);
 
 
@@ -103,6 +124,8 @@ class Loader
         
             if(file_exists($library_path."libraries/".$library.".php")){
                 require_once $library_path."libraries/".$library.".php";
+            }else{
+                throw new Exception($library_path."libraries/".$library.".php does not exists");
             }
         }
 
@@ -152,7 +175,7 @@ class Loader
             if(file_exists($model_path.'models/'.$model.'.php')){
                 require_once $model_path.'models/'.$model.'.php';
             }else{
-                throw new Exception($model_path."models/".$model.".php don't exists");
+                throw new Exception($model_path."models/".$model.".php does not exists");
             }
         }
         
@@ -176,6 +199,8 @@ class Loader
             foreach($this->_helper_paths as $path){
                 if(file_exists($path.'helpers/'.$helper.'.php')){
                     include_once($path.'helpers/'.$helper.'.php');
+                }else{
+                    throw new exception($path.'helpers'.$helper.'.php does not exists');
                 }
             }
         }
@@ -217,8 +242,12 @@ class Loader
 
         //Load models
         if(count($autoload['models']) > 0){
-            foreach($autoload['models'] as $model){
-                $this->model($model);
+            foreach($autoload['models'] as $model => $alias){
+                if(is_int($model)){
+                    $this->model($alias);
+                }else{
+                    $this->model($model, $alias);
+                }  
             }
         }
 

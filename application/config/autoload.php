@@ -40,5 +40,7 @@ $autoload['configs'] = array();
 * models
 *
 * $autoload['models'] = array('mod1', 'mod2','modN');
+* if model has a alias:
+* $autoload['models'] = array('modelName' => 'alias');
 */
 $autoload['models'] = array();
