@@ -1,5 +1,5 @@
 <?php 
-class model_example extends MP_Model
+class Example_model extends MP_Model
 {
     public function __construct()
     {
