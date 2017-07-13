@@ -86,8 +86,8 @@ Model é a camada responsável pela comunicaçao com a base dados e na maioria d
 ## Como utilizar o model? 
 
 Há duas formas de carregar um model no seu projeto:
-1. Onde quiser carregar o seu model dê o comando ```php $this->load->model('meuModel_model')``` e pronto.
-2. Caso queira que seu model seja carregado em todo o projeto, vá até o arquivo ``application\config\autoload.php`` e procure por ```php $autoload['models'] => array('meuModel_model')``` e pronto, seu model pode ser chamado em qualquer parte do projeto. 
+1. Onde quiser carregar o seu model dê o comando ``` $this->load->model('meuModel_model')``` e pronto.
+2. Caso queira que seu model seja carregado em todo o projeto, vá até o arquivo ``application\config\autoload.php`` e procure por ```$autoload['models'] => array('meuModel_model')``` e pronto, seu model pode ser chamado em qualquer parte do projeto. 
 
 # Model + Controller 
 
@@ -97,7 +97,7 @@ Aqui vamos fazer a utilização do Model e do Controller em conjunto
 
 
 ```php
-class meuController_controller extends MP_Controller
+class meuController extends MP_Controller
 {
     public function __construct()
     {
@@ -145,8 +145,9 @@ Bom, muito clichê, mas a view é a camada de visualização é a camada respons
     </html>
 ```
 # Entendendo a estrutura. 
-Sim, isso mesmo, é um conteúdo visual apenas, porém ele pode ou não receber dados vindos do controller e vamos entender essa dinamica
-Quando acessamos a url do projeto, precisamos entender que cada parte da url é referente a algum processo específico: 
+Sim, isso mesmo, é um conteúdo visual apenas, porém ele pode ou não receber dados vindos do controller e vamos entender essa dinamica:
+
+- Quando acessamos a url do projeto, precisamos entender que cada parte da url é referente a algum processo específico: 
 
 1. *www.projeto.com* - Refere-se ao diretório raiz do nosso projeto.
 2. *www.projeto.com/home* - Estamos acessando o controller homeController 
@@ -154,7 +155,7 @@ Quando acessamos a url do projeto, precisamos entender que cada parte da url é 
 4. *www.projeto.com/home/index/parametro* - Estamos enviando um parâmetro para o método index do controller homeController
 
 Entendendo bem essa estrutura o resto fica bem mais simples, pois você pode imaginar coisas do tipo:
-*www.projeto.com/users/update/1* - seria o mesmo que:
+*www.projeto.com/user/update/1* - seria o mesmo que:
 
 ```php
 class userController extends MP_Controller
@@ -220,7 +221,8 @@ class userController extends MP_Controller
         <?php endforeach;?>
     </ul>
 ```
+#Helpers
 
+#Libraries
 
-
-
+#Autoload
