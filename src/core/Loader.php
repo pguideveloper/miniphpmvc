@@ -128,7 +128,20 @@ class Loader
                 throw new Exception($library_path."libraries/".$library.".php does not exists");
             }
         }
+        
+        foreach($this->_library_paths as $library_path){
+            if(file_exists($library_path."libraries/".$library.".php")){
+                require_once $library_path."libraries/".$library.".php";
+            }
+        }
 
+        //Is the class in a sub directory? 
+        $library = explode('/', $library);
+        if(is_array($library)){
+            $object_name = end($library);
+            $library = $object_name;
+        }
+        
         if($params !== NULL && !is_array($params)){
             $params = NULL;
         }
