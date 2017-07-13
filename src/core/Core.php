@@ -4,7 +4,7 @@
 require_once(BASEPATH.'/core/Functions.php');
 
 //Intantiate config class
-$CFG = load_class('config', 'core');
+//$CFG = load_class('config', 'core');
 
 //Require the autoload class.
 require_once(BASEPATH.'core/Autoload.php');
