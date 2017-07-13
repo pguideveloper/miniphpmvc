@@ -1,9 +1,9 @@
-#miniphpmvc - O que é? 
+# miniphpmvc - O que é? 
 
 O miniphpmvc tem o intuito de ajudar você, que está começando no universo dos frameworks e quer entender como funciona a estrutura MVC aplicada diretamente no PHP.
 Com sua estrutura simples e bem comentada é fácil entender como tudo funciona. 
 
-#Configurações iniciais 
+# Configurações iniciais 
 
 Para que você consiga começar a usar o miniphpmvc é bem simples, além de clonar este repositório é necessário que após instalado você siga alguns passos: 
 
@@ -17,13 +17,13 @@ os valores para suas configurações de banco de dados.
 
 *Pronto a essa altura você deve estar vendo a tela inicial de boas vindas.*
 
-#Controllers
+# Controllers
 
 Aqui iremos ver como é a estrutura de um controller, lembrando que se você não possui nenhuma familiaridade com o padrão MVC seria de total valia que você desse uma boa olhada antes, entender o conceito, para que possa entender a distribuição de responsabilidades de cada camada. 
 
 Para criar um controller basta ir na pasta ``application\controllers\`` e dar um nome ao seu controller, preferencialmente algo como ``application\controller\meuController_controller.php`` para uma estrutura organizada. 
 
-##Como funciona um controller?
+## Como funciona um controller?
 
 Bom sem entrar em muitos detalhes, o controller é o responsável por fazer a "ligação" entre a camada Model e a camada View e vice-versa, aqui vai a estrutura básica:
 
@@ -51,7 +51,7 @@ Bom sem entrar em muitos detalhes, o controller é o responsável por fazer a "l
     }
 ```
 
-##Como funciona o model? 
+## Como funciona o model? 
 
 Model é a camada responsável pela comunicaçao com a base dados e na maioria dos casos é onde ficam as regras de negócio, também sem entrar em muitos detalhes vá até a pasta ``application\models\`` e crie um arquivo, para seguir o padrão é ideal que crie algo como ``application\models\meuModel_model.php``, exemplo
 de model: 
@@ -80,17 +80,17 @@ de model:
     }
 ```
 
-##Como utilizar o model? 
+## Como utilizar o model? 
 
 Há duas formas de carregar um model no seu projeto:
 1. Onde quiser carregar o seu model dê o comando ```php $this->load->model('meuModel_model')``` e pronto.
 2. Caso queira que seu model seja carregado em todo o projeto, vá até o arquivo ``application\config\autoload.php`` e procure por ```php $autoload['models'] => array('meuModel_model')``` e pronto, seu model pode ser chamado em qualquer parte do projeto. 
 
-###Model + Controller 
+### Model + Controller 
 
 Aqui vamos fazer a utilização do Model e do Controller em conjunto
 
-####Controller 
+#### Controller 
 
 
 ```php
@@ -112,7 +112,7 @@ class meuController_controller extends MP_Controller
     }
 }
 ```
-####Model 
+#### Model 
 
 ```php
 class meuModel_model extends MP_Model
@@ -126,11 +126,11 @@ class meuModel_model extends MP_Model
 
 Viu? É bem fácil de integrar os dois, caso precisar usar o mesmo model em diversos controllers, use o carregamento automático no arquivo ``autoload.php``.
 
-#Mas e a view?
+# Mas e a view?
 
 Bom, muito clichê, mas a view é a camada de visualização é a camada responsável por exibir o conteúdo visual do projeto e ele pode ser dar forma como você quiser, aqui iremos criar um view bem simples. 
 
-##View
+## View
 
 ```html
     <!DOCTYPE html>
@@ -143,7 +143,7 @@ Bom, muito clichê, mas a view é a camada de visualização é a camada respons
         </body>
     </html>
 ```
-##Entendendo a estrutura. 
+## Entendendo a estrutura. 
 Sim, isso mesmo, é um conteúdo visual apenas, porém ele pode ou não receber dados vindos do controller e vamos entender essa dinamica
 Quando acessamos a url do projeto, precisamos entender que cada parte da url é referente a algum processo específico: 
 
@@ -168,12 +168,12 @@ class usersController extends MP_Controller
 }
 ```
 
-##Como aplicar todos os conceitos? 
+## Como aplicar todos os conceitos? 
 
 Bom, já que foi explicado, bem por cima como cada camada funciona e como cada uma pode ser usada, vamos ver a utilização das 3 em conjunto. 
 
 
-##Model
+## Model
 ```php
 class Users_model extends MP_Model
 {
@@ -187,7 +187,7 @@ class Users_model extends MP_Model
 ```
 
 
-##Controller
+## Controller
 
 ```php 
 class userController extends MP_Controller
@@ -209,7 +209,7 @@ class userController extends MP_Controller
 }
 ```
 
-##View
+## View
 
 ```phtml 
     <ul>
