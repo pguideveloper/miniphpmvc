@@ -19,3 +19,35 @@ os valores para suas configurações de banco de dados.
 
 #Controllers
 
+Aqui iremos ver como é a estrutura de um controller, lembrando que se você não possui nenhuma familiaridade com o padrão MVC seria de total valia que você desse uma boa olhada antes, entender o conceito, para que possa entender a distribuição de responsabilidades de cada camada. 
+
+Para criar um controller basta ir na pasta ``application\controllers\`` e dar um nome ao seu controller, preferencialmente algo como ``application\controller\meuController_controller.php`` para uma estrutura organizada. 
+
+##Como funciona um controller?
+
+Bom sem entrar em muitos detalhes, o controller é o responsável por fazer a "ligação" entre a camada Model e a camada View e vice-versa, aqui vai a estrutura básica:
+
+```php 
+    class meuController_controller extends MP_Controller
+    {
+        /**
+        * Caso queira um método construtor em seu controller 
+        * é necessario chamar o construtor da classe pai
+        * com o comando parent::__construct()
+        */
+        public function __construct()
+        {
+            parent::__construct();
+        }
+
+        /**
+        * Método obrigatório em todo controller que for criado
+        * é o método principal de cada construtor
+        */
+        public function index()
+        {
+            
+        }
+    }
+```
+
