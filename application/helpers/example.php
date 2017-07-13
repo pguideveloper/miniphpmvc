@@ -1,5 +1,5 @@
 <?php 
 
-function helper_example($nome){
-    return $nome;
+function helper_example($name){
+    return $name;
 }
