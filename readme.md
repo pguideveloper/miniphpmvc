@@ -221,8 +221,63 @@ class userController extends MP_Controller
         <?php endforeach;?>
     </ul>
 ```
-#Helpers
 
-#Libraries
+# Helpers
+Helpers, são funcões auxiliares, você pode criá-las para te ajudar em algum processo específico que talvez a própria linguagem não te forneça.
 
-#Autoload
+## Como criar um helper? 
+Criar um helper é bem simples, vá até a pasta ``application\helpers\`` e crie o seu helper. 
+Aqui no exemplo irei criar um helper simples para mostrar como deve ser criado e como utilizá-lo. 
+
+- Dentro da pasta ``helpers`` irei criar um arquivo chamado ``helpers\exemplo.php``
+```php 
+function exemplo($name)
+{
+    return "Meu nome é: ". $name;
+}
+```
+Pronto, criamos um exemplo bem simples. 
+
+## Como utilizar um helper? 
+Para utilizá-lo basta chamar ele onde deseja utilizá-lo, com o comando:
+- ``$this->load->helper('exemplo');``e pronto, agora basta chamar alguma função que foi criada dentro desse arquivo, no nosso caso: 
+```php 
+echo exemplo('Pedro');
+```
+### Sempre preciso chamar o helper? 
+Como dito mais acima, podemos carregar bibliotecas(libraries), helpers e models automaticamente em todo o projeto,
+basta ir até ``application\config\autoload.php`` e procurar pela linha ``$autoload['helpers'] = array()`` e colocar 
+o nome do helper que deseja carregar em todo o projeto.
+
+# Libraries
+Libraries são bibliotecas que você deseja integrar no seu sistema, pode ser ela uma biblioteca de terceiros ou sua própria biblioteca.
+A ideia foi separar o que pertence originalmente à aplicação(controllers por exemplo) do que vai ser integrado depois. 
+
+## Como criar uma library? 
+Vá até a pasta ``application\libraries\`` e crie sua library. Aqui vamos criar também uma library bem simples:
+
+- Dentro da pasta ``libraries`` irei criar um arquivo chamado ``libraries\exemplo.php``
+```php 
+class exemplo
+{
+	public function mostrarExemplo($name)
+	{
+		return "Meu nome é: ". $name;
+	}
+
+}
+```
+## Como utilizar uma library? 
+``
+Assim como o helper, basta chamá-la onde quiser com o comando: 
+- ``$this->load->library('exemplo');`` e pronto, agora é só usar:
+```php 
+$this->exemplo->mostrarExemplo('Pedro');
+```
+
+### Posso carregar isso automaticamente? 
+Yes, you can! Basta também ir até ``application\config\autoload.php`` e procurar pela linha ``$autoload['libraries'] = array('exemplo');`` 
+e agora ela pode ser usar em qualquer parte do projeto. 
+
+
+
