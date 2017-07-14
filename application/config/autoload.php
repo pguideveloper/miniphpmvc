@@ -16,6 +16,8 @@
 * Libraries
 *
 * $autoload['libraries'] = array('lib1', 'lib2','libN');
+* if library has a alias:
+* $autoload['libraries'] = array('libName' => 'alias');
 */
 $autoload['libraries'] = array();
 

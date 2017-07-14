@@ -3,9 +3,9 @@ class lib_example
 {
     public $name; 
 
-    public function __construct($name)
+    public function __construct()
     {
-        $this->name = $name;
+        
     }
 
     public function getName(){

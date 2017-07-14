@@ -98,37 +98,12 @@ class Loader
     *
     * @return object
     */
-    public function library($library, $params = NULL, $object_name = NULL)
+    public function library($library, $object_name = NULL, $params = NULL)
     {
         if(empty($library)){
             return $this;
         }
 
-        if(is_null($object_name)){
-            $object_name = $library;
-        }
-
-        elseif(is_array($library)){
-            foreach($library as $key => $value){
-                is_int($key) ? $this->library($value, $params) : $this->library($key, $params, $value);
-            }   
-            return $this;
-        }
-
-        $MP = getInstance();
-        if(isset($MP->$object_name)){
-            throw new Exception("The library name you are loading already being by another resource");
-        }
-
-        foreach($this->_library_paths as $library_path){
-        
-            if(file_exists($library_path."libraries/".$library.".php")){
-                require_once $library_path."libraries/".$library.".php";
-            }else{
-                throw new Exception($library_path."libraries/".$library.".php does not exists");
-            }
-        }
-        
         foreach($this->_library_paths as $library_path){
             if(file_exists($library_path."libraries/".$library.".php")){
                 require_once $library_path."libraries/".$library.".php";
@@ -138,12 +113,19 @@ class Loader
         //Is the class in a sub directory? 
         $library = explode('/', $library);
         if(is_array($library)){
-            $object_name = end($library);
-            $library = $object_name;
+            $library = end($library);
+            if(is_null($object_name)){
+                $object_name = $library;
+            }
         }
-        
+
         if($params !== NULL && !is_array($params)){
             $params = NULL;
+        }
+
+        $MP = getInstance();
+        if(isset($MP->$object_name)){
+            throw new Exception("The library name you are loading already being by another resource");
         }
 
         $MP->$object_name = isset($params)
@@ -162,7 +144,7 @@ class Loader
     *
     * @return object
     */
-    public function model($model, $name = '', $db_conn = FALSE)
+    public function model($model, $name = '', $params = NULL)
     {
         if(empty($model)){
             return $this;
@@ -170,13 +152,6 @@ class Loader
 
         if(empty($name)){
             $name = $model;
-        }
-
-        elseif(is_array($model)){
-            foreach($model as $key => $value){
-                is_int($key) ? $this->model($value, '', $db_conn) : $this->model($key, $db_conn);
-            }
-            return $this;
         }
 
         $MP = getInstance();
@@ -192,8 +167,9 @@ class Loader
             }
         }
         
-
-        $MP->$name = new $model();
+        $MP->$name = !is_null($params)
+            ? new $model($params)
+            : new $model();
         return $this;
     }
 

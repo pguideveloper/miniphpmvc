@@ -1,5 +1,12 @@
 <?php 
-
+/**
+* This function is a helper, to load some class.
+*
+* @param string $class - The class name
+* @param string $directory - The class path
+* @param mixed $param - The class paramaters
+* @return object
+*/
 function load_class($class, $directory = 'libraries', $param = NULL)
 {
     
@@ -18,7 +25,7 @@ function load_class($class, $directory = 'libraries', $param = NULL)
             break;
         }
     }
-
+    
     is_loaded($class);
  
     $_class[$class] = isset($param)
