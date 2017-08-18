@@ -66,7 +66,7 @@ class Loader
     /**
     * @method view
     * 
-    * Loas a view 
+    * Load a view 
     *
     * @param string $view = the view name
     * @param array $data  = data that will be sent to the view
