@@ -18,7 +18,8 @@ class MP_Controller
     * 
     * @uses init() from core/Loader.php
     */
-    public function __construct(){
+    public function __construct()
+    {
         self::$instance = $this; 
 
         foreach(is_loaded() as $var => $class){
